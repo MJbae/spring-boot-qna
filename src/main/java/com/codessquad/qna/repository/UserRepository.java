@@ -1,14 +1,15 @@
 package com.codessquad.qna.repository;
 
 import com.codessquad.qna.domain.User;
+import org.springframework.data.repository.CrudRepository;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
-public class UserRepository {
-    List<User> userStorage = new ArrayList<>();
+public interface UserRepository extends CrudRepository<User, Long> {
 
-    public void save(User user){
-        userStorage.add(user);
-    }
+    Optional<User> findByUserId(String userId);
+
+    @Override
+    List<User> findAll();
 }
